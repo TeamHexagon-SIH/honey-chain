@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Honey Chain | Smart Beekeeping</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">HC</div>
+
+            <div>
+                <h1>Honey Chain</h1>
+                <p>Smart Beekeeping</p>
+            </div>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <p class="nav-label">MONITORING</p>
+
+            <button class="nav-item active"
+                    onclick="showPage('dashboard', this)">
+                <span>◉</span>
+                Dashboard
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('hives', this)">
+                <span>♧</span>
+                Hive Monitoring
+            </button>
+
+            <button class="nav-item"
+                    onclick="showPage('batches', this)">
+                <span>◈</span>
+                Honey Batches
+            </button>
+
+
+            <p class="nav-label">TRACEABILITY</p>
+
+            <button class="nav-item"
+                    onclick="showPage('verification', this)">
+                <span>✓</span>
+                Verify Honey
+            </button>
+
+
+            <p class="nav-label">MANAGEMENT</p>
+
+            <button class="nav-item"
+                    onclick="showPage('kvic', this)">
+                <span>▦</span>
+                KVIC Overview
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="prototype-badge">
+                <span class="pulse"></span>
+                Prototype System
+            </div>
+
+            <p>SIH 2026 · Honey Chain</p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="mobile-brand">
+                <strong>Honey Chain</strong>
+            </div>
+
+            <div class="topbar-right">
+
+                <div class="connection-status">
+                    <span class="status-dot"></span>
+                    Backend Connected
+                </div>
+
+                <div class="user-profile">
+
+                    <div class="avatar">
+                        KK
+                    </div>
+
+                    <div>
+                        <strong>Beekeeper</strong>
+                        <small>Ranchi Cluster</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ===================================== -->
+        <!-- DASHBOARD -->
+        <!-- ===================================== -->
+
+        <section id="dashboard" class="page active-page">
+
+            <div class="page-header">
+
+                <div>
+                    <p class="eyebrow">HIVE MANAGEMENT</p>
+
+                    <h2>Good evening, Koushik.</h2>
+
+                    <p class="page-description">
+                        Monitor hive conditions, colony health and
+                        honey production from one place.
+                    </p>
+                </div>
+
+                <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    LIVE DATA
+                </div>
+
+            </div>
+
+
+            <!-- KPI CARDS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-label">Temperature</span>
+                        <span class="stat-icon">°C</span>
+                    </div>
+
+                    <div class="stat-value" id="temperature">
+                        --
+                    </div>
+
+                    <div class="stat-bottom">
+                        <span>Hive HIVE-RN-001</span>
+                        <span class="normal-text">Live</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-label">Humidity</span>
+                        <span class="stat-icon">%</span>
+                    </div>
+
+                    <div class="stat-value" id="humidity">
+                        --
+                    </div>
+
+                    <div class="stat-bottom">
+                        <span>Current reading</span>
+                        <span class="normal-text">Live</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-label">Hive Weight</span>
+                        <span class="stat-icon">KG</span>
+                    </div>
+
+                    <div class="stat-value" id="weight">
+                        --
+                    </div>
+
+                    <div class="stat-bottom">
+                        <span>Estimated hive mass</span>
+                        <span class="normal-text">Live</span>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+                        <span class="stat-label">Acoustic Level</span>
+                        <span class="stat-icon">dB</span>
+                    </div>
+
+                    <div class="stat-value" id="acoustic">
+                        --
+                    </div>
+
+                    <div class="stat-bottom">
+                        <span>Hive activity signal</span>
+                        <span class="normal-text">Live</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MAIN DASHBOARD GRID -->
+
+            <div class="content-grid">
+
+
+                <!-- AI HEALTH -->
+
+                <div class="panel health-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="panel-kicker">AI ANALYTICS</p>
+                            <h3>Hive Health</h3>
+                        </div>
+
+                        <span class="ai-badge">
+                            AI
+                        </span>
+
+                    </div>
+
+
+                    <div class="health-content">
+
+                        <div class="health-score">
+
+                            <div class="score-ring">
+
+                                <span id="health-score">
+                                    --
+                                </span>
+
+                                <small>/100</small>
+
+                            </div>
+
+                            <div>
+                                <p>Health Score</p>
+                                <small>Sensor-pattern analysis</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="health-status-box">
+
+                            <span class="status-label">
+                                CURRENT STATUS
+                            </span>
+
+                            <strong id="health-status">
+                                Loading...
+                            </strong>
+
+                            <span id="risk">
+                                --
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel-note">
+
+                        <span>i</span>
+
+                        AI result indicates possible colony
+                        stress/risk based on prototype sensor data.
+
+                    </div>
+
+                </div>
+
+
+                <!-- PRODUCTIVITY -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <p class="panel-kicker">PREDICTION</p>
+                            <h3>Honey Productivity</h3>
+                        </div>
+
+                        <span class="small-label">
+                            EXPERIMENTAL
+                        </span>
+
+                    </div>
+
+
+                    <div class="yield-display">
+
+                        <div>
+
+                            <span class="yield-label">
+                                Predicted Yield
+                            </span>
+
+                            <strong id="predicted-yield">
+                                -- kg
+                            </strong>
+
+                        </div>
+
+
+                        <div class="yield-factor">
+
+                            <span>Flowering Score</span>
+
+                            <strong id="flowering-score">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="prediction-note">
+
+                        Estimated using hive conditions,
+                        flowering score and health score.
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- CURRENT BATCH -->
+
+            <div class="panel batch-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="panel-kicker">TRACEABILITY</p>
+                        <h3>Current Honey Batch</h3>
+                    </div>
+
+                    <span class="verified-badge">
+                        ● TRACEABLE
+                    </span>
+
+                </div>
+
+
+                <div class="batch-info-grid">
+
+                    <div>
+                        <span>Batch Code</span>
+                        <strong id="batch-code">
+                            HC26-0001
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Quantity</span>
+                        <strong id="batch-quantity">
+                            --
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Status</span>
+                        <strong id="batch-status">
+                            --
+                        </strong>
+                    </div>
+
+                    <button
+                        class="primary-button"
+                        onclick="showPageByName('verification')">
+
+                        Verify Batch →
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- JOURNEY -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="panel-kicker">SUPPLY CHAIN</p>
+                        <h3>Traceability Journey</h3>
+                    </div>
+
+                    <span class="chain-label">
+                        SHA-256 HASH CHAIN
+                    </span>
+
+                </div>
+
+
+                <div class="journey">
+
+                    <div class="journey-step complete">
+                        <div class="journey-node">01</div>
+                        <strong>Harvest</strong>
+                        <span>Hive</span>
+                    </div>
+
+                    <div class="journey-line complete"></div>
+
+                    <div class="journey-step complete">
+                        <div class="journey-node">02</div>
+                        <strong>Lab Test</strong>
+                        <span>Purity</span>
+                    </div>
+
+                    <div class="journey-line complete"></div>
+
+                    <div class="journey-step complete">
+                        <div class="journey-node">03</div>
+                        <strong>Packaging</strong>
+                        <span>Batch</span>
+                    </div>
+
+                    <div class="journey-line complete"></div>
+
+                    <div class="journey-step complete">
+                        <div class="journey-node">04</div>
+                        <strong>Distribution</strong>
+                        <span>Supply</span>
+                    </div>
+
+                    <div class="journey-line"></div>
+
+                    <div class="journey-step">
+                        <div class="journey-node">05</div>
+                        <strong>Retail</strong>
+                        <span>Consumer</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ===================================== -->
+        <!-- HIVE MONITORING -->
+        <!-- ===================================== -->
+
+        <section id="hives" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <p class="eyebrow">IOT MONITORING</p>
+
+                    <h2>Hive Monitoring</h2>
+
+                    <p class="page-description">
+                        Live environmental and activity readings
+                        from monitored hives.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="panel-kicker">ACTIVE HIVE</p>
+                        <h3>HIVE-RN-001</h3>
+                    </div>
+
+                    <span class="verified-badge">
+                        ● ONLINE
+                    </span>
+
+                </div>
+
+
+                <div class="large-sensor-grid">
+
+                    <div class="sensor-box">
+                        <span>Temperature</span>
+                        <strong id="hive-temperature">-- °C</strong>
+                    </div>
+
+                    <div class="sensor-box">
+                        <span>Humidity</span>
+                        <strong id="hive-humidity">-- %</strong>
+                    </div>
+
+                    <div class="sensor-box">
+                        <span>Hive Weight</span>
+                        <strong id="hive-weight">-- kg</strong>
+                    </div>
+
+                    <div class="sensor-box">
+                        <span>Acoustic Level</span>
+                        <strong id="hive-acoustic">--</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ===================================== -->
+        <!-- BATCHES -->
+        <!-- ===================================== -->
+
+        <section id="batches" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <p class="eyebrow">HONEY TRACEABILITY</p>
+
+                    <h2>Honey Batches</h2>
+
+                    <p class="page-description">
+                        Secure batch records connected to monitored hives.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="batch-list-header">
+                    <span>Batch</span>
+                    <span>Hive</span>
+                    <span>Quantity</span>
+                    <span>Status</span>
+                    <span>Action</span>
+                </div>
+
+
+                <div id="batch-list">
+
+                    <div class="loading-row">
+                        Loading batch records...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ===================================== -->
+        <!-- CONSUMER VERIFICATION -->
+        <!-- ===================================== -->
+
+        <section id="verification" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <p class="eyebrow">CONSUMER VERIFICATION</p>
+
+                    <h2>Verify Your Honey</h2>
+
+                    <p class="page-description">
+                        Enter the batch code printed on the product
+                        to inspect its traceability record.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="verification-search panel">
+
+                <label for="verify-batch-code">
+                    Honey Batch Code
+                </label>
+
+                <div class="search-row">
+
+                    <input
+                        type="text"
+                        id="verify-batch-code"
+                        value="HC26-0001"
+                        placeholder="e.g. HC26-0001">
+
+                    <button
+                        class="primary-button"
+                        onclick="verifyHoney()">
+
+                        Verify Batch
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="consumer-result"
+                class="verification-result">
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        ✓
+                    </div>
+
+                    <h3>Ready to verify</h3>
+
+                    <p>
+                        Enter a batch code above to retrieve
+                        the honey's traceability record.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ===================================== -->
+        <!-- KVIC -->
+        <!-- ===================================== -->
+
+        <section id="kvic" class="page">
+
+            <div class="page-header">
+
+                <div>
+                    <p class="eyebrow">PROGRAM MONITORING</p>
+
+                    <h2>KVIC Cluster Overview</h2>
+
+                    <p class="page-description">
+                        Centralized monitoring of rural beekeeping
+                        clusters and production activity.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Clusters</span>
+                        <span class="stat-icon">CL</span>
+                    </div>
+
+                    <div class="stat-value" id="cluster-count">
+                        --
+                    </div>
+
+                    <div class="stat-bottom">
+                        <span>Registered clusters</span>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Beekeepers</span>
+                        <span class="stat-icon">BK</span>
+                    </div>
+
+                    <div class="stat-value" id="beekeeper-count">
+                        --
+                    </div>
+
+                    <div class="stat-bottom">
+                        <span>Registered beekeepers</span>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Hives</span>
+                        <span class="stat-icon">HV</span>
+                    </div>
+
+                    <div class="stat-value" id="hive-count">
+                        --
+                    </div>
+
+                    <div class="stat-bottom">
+                        <span>Monitored hives</span>
+                    </div>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span class="stat-label">Honey Batches</span>
+                        <span class="stat-icon">HB</span>
+                    </div>
+
+                    <div class="stat-value" id="batch-count">
+                        --
+                    </div>
+
+                    <div class="stat-bottom">
+                        <span>Traceable batches</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="panel-kicker">RURAL NETWORK</p>
+                        <h3>Registered Clusters</h3>
+                    </div>
+
+                </div>
+
+
+                <div id="cluster-list">
+
+                    <div class="loading-row">
+                        Loading clusters...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
